@@ -1,0 +1,47 @@
+require:
+  - rubocop-rails
+
+AllCops:
+  NewCops: disable
+  TargetRubyVersion: 3.3
+  Exclude:
+    - 'db/schema.rb' 
+    - 'db/cable_schema.rb'
+    - 'db/cache_schema.rb'
+    - 'db/queue_schema.rb'
+    - 'node_modules/**/*'
+    - 'bin/*'
+    - 'vendor/**/*'
+
+
+Layout/LineLength:
+  Enabled: false 
+Layout/TrailingEmptyLines:
+  Enabled: false 
+Layout/SpaceInsidePercentLiteralDelimiters:
+  Enabled: false 
+Layout/SpaceInsideArrayLiteralBrackets:
+  Enabled: false 
+Layout/EndOfLine:
+  Enabled: false 
+
+Style/Documentation:
+  Enabled: false 
+Style/FrozenStringLiteralComment:
+  Enabled: false 
+Style/StringLiterals:
+  EnforcedStyle: double_quotes 
+Style/SymbolArray:
+  Enabled: false 
+Style/WordArray:
+  Enabled: false 
+
+Metrics/BlockLength:
+  Enabled: false 
+Metrics/MethodLength:
+  Enabled: false 
+
+Bundler/OrderedGems:
+  Enabled: false 
+Bundler/DuplicatedGroup:
+  Enabled: false 
