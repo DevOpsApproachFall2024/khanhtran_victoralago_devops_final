@@ -1,0 +1,50 @@
+name: Lint Code
+
+on:
+  pull_request:
+  push:
+    branches: 
+        - '**'
+
+jobs:
+  lint-frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install required packages
+        run: sudo apt-get update && sudo apt-get install -y build-essential libssl-dev libreadline-dev zlib1g-dev
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+            ruby-version: 3.2.2
+            bundler-cache: true
+        
+      - name: Install Gems
+        working-directory: WeatherAppFrontend
+        run: bundle install
+
+      - name: Run RuboCop (Ruby linter)
+        working-directory: WeatherAppFrontend
+        run: bundle exec rubocop
+
+  lint-backend:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Install Maven
+        run: sudo apt-get update && sudo apt-get install -y maven
+
+      - name: Run Checkstyle (Java linter)
+        working-directory: WeatherAppApi
+        run: mvn checkstyle:check
