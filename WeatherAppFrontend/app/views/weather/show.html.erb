@@ -1,0 +1,12 @@
+<!-- Example view file: app/views/weather/index.html.erb -->
+<div class="main-content">
+    <h1>Weather Report</h1>
+
+    <% if @weather_data %>
+    <p>Weather in <%= params[:city] %>: <%= @weather_data %></p>
+    <% else %>
+    <p class="unavailable">Weather data is currently unavailable.</p>
+    <% end %>
+
+    <%= link_to 'Return to Country Selection', root_path, class: 'button' %>
+</div>

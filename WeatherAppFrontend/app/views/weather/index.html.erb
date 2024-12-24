@@ -1,0 +1,8 @@
+<div class="main-content">
+  <h1>Select a Country</h1>
+  <%= form_with url: fetch_weather_path, method: :post, class: 'form-container' do |form| %>
+    <%= select_tag :city, options_for_select(@countries), prompt: 'Select a country', class: 'select-input' %>
+    <%= form.submit "Check Weather", class: 'submit-button' %>
+  <% end %>
+  <%= link_to 'Merry Christmas Tony', 'http://localhost:8080/tony', class: 'christmas-button', rel: 'noopener' %>
+</div>
