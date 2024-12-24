@@ -10,6 +10,7 @@
 # Make sure RUBY_VERSION matches the Ruby version in .ruby-version
 ARG RUBY_VERSION=3.3.6
 FROM docker.io/library/ruby:$RUBY_VERSION-slim AS base
+LABEL org.opencontainers.image.source="https://github.com/DevOpsApproachFall2024/khanhtran_victoralago_devops_final"
 
 # Rails app lives here
 WORKDIR /rails
