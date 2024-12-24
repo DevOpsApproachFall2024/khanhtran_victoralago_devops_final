@@ -61,7 +61,7 @@ jobs:
           context: ./WeatherAppFrontend
           file: ./WeatherAppFrontend/Dockerfile
           push: true
-          tags: ghcr.io/${{ github.repository_owner }}/weatherapp-frontend:${{ env.TAG }}
+          tags: ghcr.io/${{ env.REPO_OWNER_LC }}/weatherapp-frontend:${{ env.TAG }}
 
       # Step 6: Build and Push Backend Docker Image
       - name: Build and Push Backend Docker Image
@@ -70,7 +70,7 @@ jobs:
           context: ./WeatherAppApi
           file: ./WeatherAppApi/Dockerfile
           push: true
-          tags: ghcr.io/${{ github.repository_owner }}/weatherapp-backend:${{ env.TAG }}
+          tags: ghcr.io/${{ env.REPO_OWNER_LC }}/weatherapp-backend:${{ env.TAG }}
 
       # Step 7: Create Git Tag
       - name: Create and Push Git Tag
