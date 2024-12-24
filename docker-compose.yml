@@ -1,0 +1,29 @@
+version: "3.9"
+
+services:
+  backend:
+    build:
+      context: ./WeatherAppApi
+    ports:
+      - "8080:8080"
+    networks:
+      - app-network
+
+  frontend:
+    build:
+      context: ./WeatherAppFrontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    environment:
+      RAILS_ENV: production
+      BACKEND_URL: "http://backend:8080"
+      SECRET_KEY_BASE: "your_generated_secret_key"
+      HOST: "http://localhost:3000"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
